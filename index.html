@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vahaan Wale — Home</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- model-viewer is used only on car page, but safe to include sitewide -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+<body>
+  <!-- Splash -->
+  <div id="splash">
+    <div class="splash-content">
+      <div class="wheel" aria-hidden="true"></div>
+      <h1>Vahaan Wale</h1>
+    </div>
+  </div>
+
+  <!-- Main (hidden until splash finishes) -->
+  <div id="mainContent" style="display:none;">
+    <header class="site-header">
+      <a class="brand" href="index.html">
+        <img id="brandLogo" src="assets/logo.png" alt="Vahaan Wale logo" onerror="this.style.display='none';document.getElementById('brandText').style.display='inline'"/>
+        <span id="brandText" style="display:none;">🚗 Vahaan Wale</span>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="search.html" class="nav-link">Search</a>
+        <a href="selected.html" class="nav-link">Selected</a>
+        <a href="compare.html" class="nav-link">Compare</a>
+        <button id="modeToggle" class="mode-btn">🌙 Dark Mode</button>
+      </nav>
+    </header>
+
+    <main class="container">
+      <h1 class="page-title">Popular Cars</h1>
+
+      <!-- Home grid populated by script -->
+      <div id="homeGrid" class="car-grid"></div>
+
+      <section id="recentViewedSection" class="recent-section">
+        <h2>Previously viewed</h2>
+        <div id="recentViewed" class="pill-list"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2025 Vahaan Wale</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

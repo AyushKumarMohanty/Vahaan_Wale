@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Compare — Vahaan Wale</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" id="brandLogo" alt="logo" onerror="this.style.display='none'; document.getElementById('brandText').style.display='inline'">
+      <span id="brandText" style="display:none;">🚗 Vahaan Wale</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="search.html" class="nav-link">Search</a>
+      <a href="selected.html" class="nav-link">Selected</a>
+      <a href="compare.html" class="nav-link active">Compare</a>
+      <button id="modeToggle" class="mode-btn">🌙 Dark Mode</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Compare Selected Cars</h1>
+
+    <div class="search-controls">
+      <label for="compareCity">City for On-Road:</label>
+      <select id="compareCity" class="select">
+        <option value="delhi">Delhi</option>
+        <option value="mumbai">Mumbai</option>
+        <option value="bangalore">Bangalore</option>
+        <option value="chennai">Chennai</option>
+        <option value="kolkata">Kolkata</option>
+      </select>
+      <button id="clearComparePage" class="btn-ghost">Clear Compare</button>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Car</th><th>Ex-Showroom</th><th>On-Road (City)</th><th>Mileage</th><th>Power</th></tr></thead>
+        <tbody id="comparePageBody"></tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer class="site-footer"><p>© 2025 Vahaan Wale</p></footer>
+  <script src="script.js"></script>
+</body>
+</html>

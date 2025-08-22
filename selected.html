@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Selected — Vahaan Wale</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <img src="assets/logo.png" id="brandLogo" alt="logo" onerror="this.style.display='none'; document.getElementById('brandText').style.display='inline'">
+      <span id="brandText" style="display:none;">🚗 Vahaan Wale</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="search.html" class="nav-link">Search</a>
+      <a href="selected.html" class="nav-link active">Selected</a>
+      <a href="compare.html" class="nav-link">Compare</a>
+      <button id="modeToggle" class="mode-btn">🌙 Dark Mode</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">My Selected Cars</h1>
+    <div id="selectedCards" class="car-grid"></div>
+    <div class="inline-actions" style="margin-top:1rem;">
+      <button id="clearSelected" class="btn-ghost">Clear Selected</button>
+    </div>
+  </main>
+
+  <footer class="site-footer"><p>© 2025 Vahaan Wale</p></footer>
+  <script src="script.js"></script>
+</body>
+</html>

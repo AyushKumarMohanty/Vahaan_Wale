@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Car Details — Vahaan Wale</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <img id="brandLogo" src="assets/logo.png" alt="logo" onerror="this.style.display='none'; document.getElementById('brandText').style.display='inline'">
+      <span id="brandText" style="display:none;">🚗 Vahaan Wale</span>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="search.html" class="nav-link">Search</a>
+      <a href="selected.html" class="nav-link">Selected</a>
+      <a href="compare.html" class="nav-link">Compare</a>
+      <button id="modeToggle" class="mode-btn">🌙 Dark Mode</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1 id="carName" class="page-title">Car Details</h1>
+
+    <section class="car-details">
+      <img id="carImage" alt="car image">
+      <div class="car-specs">
+        <h2 id="carModel"></h2>
+        <p><strong>Ex-Showroom:</strong> <span id="carPrice"></span></p>
+        <p><strong>Mileage:</strong> <span id="carMileage"></span></p>
+        <p><strong>Power:</strong> <span id="carPower"></span></p>
+
+        <div class="onroad">
+          <label><strong>Select City:</strong>
+            <select id="citySelectDetails" class="select compact">
+              <option value="delhi">Delhi</option>
+              <option value="mumbai">Mumbai</option>
+              <option value="bangalore">Bangalore</option>
+              <option value="chennai">Chennai</option>
+              <option value="kolkata">Kolkata</option>
+            </select>
+          </label>
+          <p><strong>On-Road Price:</strong> <span id="carOnRoad"></span></p>
+        </div>
+
+        <div class="emi-card">
+          <h3>Down Payment & EMI</h3>
+          <div class="emi-grid">
+            <label>Down Payment (₹)<input id="downPayment" type="number" value="200000" class="input"></label>
+            <label>Tenure (years)<input id="tenure" type="number" value="5" min="1" max="10" class="input"></label>
+            <label>Interest (% p.a.)<input id="rate" type="number" value="10" class="input"></label>
+          </div>
+          <div class="dp-buttons" style="margin-top:.5rem;">
+            <button class="btn-ghost dpBtn" data-p="0.1">10% DP</button>
+            <button class="btn-ghost dpBtn" data-p="0.2">20% DP</button>
+            <button class="btn-ghost dpBtn" data-p="0.3">30% DP</button>
+          </div>
+          <button id="calcBtn" class="btn-primary" style="margin-top:.5rem;">Calculate EMI</button>
+          <p class="emi-output"><strong>Estimated EMI:</strong> <span id="carEMI"></span> / month</p>
+        </div>
+
+        <div class="inline-actions" style="margin-top:.6rem;">
+          <button id="saveSelected" class="btn-primary">❤️ Add to Selected</button>
+          <button id="toggleCompare" class="btn-ghost">⚖ Add to Compare</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="model3d" style="margin-top:1.25rem;">
+      <h2>3D Model</h2>
+      <!-- public shared car.glb (sample). Replace later with your own .glb if you have -->
+      <model-viewer id="carModel3D" src="https://modelviewer.dev/shared-assets/models/Car.glb" alt="3D model" auto-rotate camera-controls exposure="1.2" shadow-intensity="1"></model-viewer>
+    </section>
+
+    <section class="compare" style="margin-top:1.25rem;">
+      <h2>Quick Comparison</h2>
+      <table>
+        <thead>
+          <tr><th>Car</th><th>Ex-Showroom</th><th>Mileage</th><th>Power</th></tr>
+        </thead>
+        <tbody id="compareTable"></tbody>
+      </table>
+    </section>
+
+    <section class="history-selected" style="margin-top:1.25rem;">
+      <div>
+        <h3>Previously viewed</h3>
+        <ul id="historyList" class="bullet-list"></ul>
+      </div>
+      <div>
+        <h3>Selected for compare</h3>
+        <ul id="compareList" class="bullet-list"></ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><p>© 2025 Vahaan Wale</p></footer>
+  <script src="script.js"></script>
+</body>
+</html>
