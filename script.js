@@ -112,26 +112,38 @@ const cars = {
 };
 
 /* ---------- Utilities ---------- */
-const inr = n => "₹" + Number(n).toLocaleString("en-IN");
+const inr = (n) => "₹" + Number(n).toLocaleString("en-IN");
 function computeEMI(principal, annualRate = 10, years = 5) {
-  const r = (annualRate / 100) / 12;
+  const r = annualRate / 100 / 12;
   const n = years * 12;
   if (principal <= 0) return 0;
   const emi = (principal * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
   return Math.round(emi);
 }
-const cityFactor = { delhi: 1.05, mumbai: 1.08, bangalore: 1.10, chennai: 1.07, kolkata: 1.06 };
+const cityFactor = {
+  delhi: 1.05,
+  mumbai: 1.08,
+  bangalore: 1.1,
+  chennai: 1.07,
+  kolkata: 1.06,
+};
 
 /* ---------- Dark mode (persist) ---------- */
 (function initTheme() {
   const saved = localStorage.getItem("vw-theme");
   const toggle = document.getElementById("modeToggle");
   if (saved === "dark") document.body.classList.add("dark");
-  if (toggle) toggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-    localStorage.setItem("vw-theme", document.body.classList.contains("dark") ? "dark" : "light");
-    toggle.textContent = document.body.classList.contains("dark") ? "☀️ Light Mode" : "🌙 Dark Mode";
-  });
+  if (toggle)
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      localStorage.setItem(
+        "vw-theme",
+        document.body.classList.contains("dark") ? "dark" : "light"
+      );
+      toggle.textContent = document.body.classList.contains("dark")
+        ? "☀️ Light Mode"
+        : "🌙 Dark Mode";
+    });
 })();
 
 /* ---------- Splash ---------- */
@@ -139,7 +151,10 @@ window.addEventListener("load", () => {
   const splash = document.getElementById("splash");
   const main = document.getElementById("mainContent");
   if (splash && main) {
-    setTimeout(() => { splash.style.display = "none"; main.style.display = "block"; }, 1800);
+    setTimeout(() => {
+      splash.style.display = "none";
+      main.style.display = "block";
+    }, 1800);
   }
 });
 
@@ -153,7 +168,9 @@ window.addEventListener("load", () => {
     a.className = "car-card";
     a.href = `car.html?car=${encodeURIComponent(key)}&city=delhi`;
     a.innerHTML = `
-      <img src="${c.img}" alt="${c.name}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22160%22><rect width=%22300%22 height=%22160%22 fill=%22%23ddd%22/><text x=%2240%22 y=%2288%22 font-size=%2216%22>Image unavailable</text></svg>';">
+      <img src="${c.img}" alt="${
+      c.name
+    }" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22160%22><rect width=%22300%22 height=%22160%22 fill=%22%23ddd%22/><text x=%2240%22 y=%2288%22 font-size=%2216%22>Image unavailable</text></svg>';">
       <h2>${c.name}</h2>
       <p>${inr(c.price)} • ${c.mileage}</p>
     `;
@@ -171,7 +188,7 @@ window.addEventListener("load", () => {
   if (recentRoot) {
     const viewed = JSON.parse(localStorage.getItem("vw-viewed") || "[]");
     recentRoot.innerHTML = "";
-    viewed.slice(0, 8).forEach(k => {
+    viewed.slice(0, 8).forEach((k) => {
       const d = document.createElement("div");
       d.className = "pill";
       d.textContent = cars[k] ? cars[k].name : k;
@@ -194,26 +211,38 @@ window.addEventListener("load", () => {
     if (!pillsWrap) return;
     const set = new Set(JSON.parse(localStorage.getItem("vw-compare") || "[]"));
     pillsWrap.innerHTML = "";
-    set.forEach(k => {
+    set.forEach((k) => {
       const pill = document.createElement("div");
       pill.className = "pill";
-      pill.innerHTML = `${cars[k]?.name || k} <span style="margin-left:.4rem;cursor:pointer" data-k="${k}">×</span>`;
+      pill.innerHTML = `${
+        cars[k]?.name || k
+      } <span style="margin-left:.4rem;cursor:pointer" data-k="${k}">×</span>`;
       pillsWrap.appendChild(pill);
     });
-    pillsWrap.querySelectorAll("span").forEach(x => x.addEventListener("click", () => {
-      const k = x.getAttribute("data-k");
-      const set = new Set(JSON.parse(localStorage.getItem("vw-compare") || "[]"));
-      set.delete(k); localStorage.setItem("vw-compare", JSON.stringify([...set]));
-      renderPills(); renderResults(qEl.value);
-    }));
+    pillsWrap.querySelectorAll("span").forEach((x) =>
+      x.addEventListener("click", () => {
+        const k = x.getAttribute("data-k");
+        const set = new Set(
+          JSON.parse(localStorage.getItem("vw-compare") || "[]")
+        );
+        set.delete(k);
+        localStorage.setItem("vw-compare", JSON.stringify([...set]));
+        renderPills();
+        renderResults(qEl.value);
+      })
+    );
   }
 
   function makeCard(k, c) {
     const wrapper = document.createElement("div");
     wrapper.className = "car-card";
     wrapper.innerHTML = `
-      <a href="car.html?car=${encodeURIComponent(k)}&city=${encodeURIComponent(cityEl?.value||'delhi')}" class="card-link">
-        <img src="${c.img}" alt="${c.name}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22160%22><rect width=%22300%22 height=%22160%22 fill=%22%23ddd%22/><text x=%2240%22 y=%2288%22 font-size=%2216%22>Image unavailable</text></svg>';">
+      <a href="car.html?car=${encodeURIComponent(k)}&city=${encodeURIComponent(
+      cityEl?.value || "delhi"
+    )}" class="card-link">
+        <img src="${c.img}" alt="${
+      c.name
+    }" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22160%22><rect width=%22300%22 height=%22160%22 fill=%22%23ddd%22/><text x=%2240%22 y=%2288%22 font-size=%2216%22>Image unavailable</text></svg>';">
         <h2>${c.name}</h2>
         <p>${inr(c.price)} • ${c.mileage}</p>
       </a>
@@ -226,38 +255,51 @@ window.addEventListener("load", () => {
 
   function renderResults(q = "") {
     results.innerHTML = "";
-    const query = String(q || "").trim().toLowerCase();
+    const query = String(q || "")
+      .trim()
+      .toLowerCase();
     Object.entries(cars).forEach(([k, c]) => {
       if (query && !c.name.toLowerCase().includes(query)) return;
       results.appendChild(makeCard(k, c));
     });
 
     // wire controls
-    results.querySelectorAll(".cmpBox").forEach(cb => {
+    results.querySelectorAll(".cmpBox").forEach((cb) => {
       cb.addEventListener("change", () => {
         const k = cb.dataset.k;
-        const set = new Set(JSON.parse(localStorage.getItem("vw-compare") || "[]"));
-        if (cb.checked) set.add(k); else set.delete(k);
+        const set = new Set(
+          JSON.parse(localStorage.getItem("vw-compare") || "[]")
+        );
+        if (cb.checked) set.add(k);
+        else set.delete(k);
         localStorage.setItem("vw-compare", JSON.stringify([...set]));
         renderPills();
       });
     });
-    results.querySelectorAll(".selBtn").forEach(btn => {
+    results.querySelectorAll(".selBtn").forEach((btn) => {
       btn.addEventListener("click", () => {
         const k = btn.dataset.k;
-        const sel = new Set(JSON.parse(localStorage.getItem("vw-selected") || "[]"));
-        sel.add(k); localStorage.setItem("vw-selected", JSON.stringify([...sel]));
+        const sel = new Set(
+          JSON.parse(localStorage.getItem("vw-selected") || "[]")
+        );
+        sel.add(k);
+        localStorage.setItem("vw-selected", JSON.stringify([...sel]));
         btn.textContent = "✓ Saved";
       });
     });
   }
 
-  qEl.addEventListener("input", e => renderResults(e.target.value));
+  qEl.addEventListener("input", (e) => renderResults(e.target.value));
   cityEl?.addEventListener("change", () => renderResults(qEl.value));
-  goCompare?.addEventListener("click", () => location.href = "compare.html");
-  clearCompare?.addEventListener("click", () => { localStorage.setItem("vw-compare", "[]"); renderPills(); renderResults(qEl.value); });
+  goCompare?.addEventListener("click", () => (location.href = "compare.html"));
+  clearCompare?.addEventListener("click", () => {
+    localStorage.setItem("vw-compare", "[]");
+    renderPills();
+    renderResults(qEl.value);
+  });
 
-  renderPills(); renderResults();
+  renderPills();
+  renderResults();
 })();
 
 /* ---------- Car details page logic ---------- */
@@ -312,7 +354,7 @@ window.addEventListener("load", () => {
   }
   citySelect.value = cityParam;
   let currentOnRoad = updateOnRoad();
-  citySelect.addEventListener("change", () => currentOnRoad = updateOnRoad());
+  citySelect.addEventListener("change", () => (currentOnRoad = updateOnRoad()));
 
   // EMI calc
   function updateEMI() {
@@ -325,11 +367,13 @@ window.addEventListener("load", () => {
   calcBtn?.addEventListener("click", updateEMI);
   updateEMI();
 
-  dpButtons.forEach(btn => btn.addEventListener("click", () => {
-    const pct = Number(btn.dataset.p) || 0;
-    dpInput.value = Math.round(currentOnRoad * pct);
-    updateEMI();
-  }));
+  dpButtons.forEach((btn) =>
+    btn.addEventListener("click", () => {
+      const pct = Number(btn.dataset.p) || 0;
+      dpInput.value = Math.round(currentOnRoad * pct);
+      updateEMI();
+    })
+  );
 
   // save viewed history
   const viewed = JSON.parse(localStorage.getItem("vw-viewed") || "[]");
@@ -337,7 +381,7 @@ window.addEventListener("load", () => {
   localStorage.setItem("vw-viewed", JSON.stringify(viewed.slice(0, 20)));
   if (historyList) {
     historyList.innerHTML = "";
-    JSON.parse(localStorage.getItem("vw-viewed") || "[]").forEach(k => {
+    JSON.parse(localStorage.getItem("vw-viewed") || "[]").forEach((k) => {
       const li = document.createElement("li");
       li.textContent = cars[k]?.name || k;
       historyList.appendChild(li);
@@ -349,12 +393,19 @@ window.addEventListener("load", () => {
     if (!compareList) return;
     compareList.innerHTML = "";
     const set = new Set(JSON.parse(localStorage.getItem("vw-compare") || "[]"));
-    set.forEach(k => { const li = document.createElement("li"); li.textContent = cars[k]?.name || k; compareList.appendChild(li); });
-    toggleCompareBtn.textContent = set.has(key) ? "⚖ Remove from Compare" : "⚖ Add to Compare";
+    set.forEach((k) => {
+      const li = document.createElement("li");
+      li.textContent = cars[k]?.name || k;
+      compareList.appendChild(li);
+    });
+    toggleCompareBtn.textContent = set.has(key)
+      ? "⚖ Remove from Compare"
+      : "⚖ Add to Compare";
   }
   toggleCompareBtn?.addEventListener("click", () => {
     const set = new Set(JSON.parse(localStorage.getItem("vw-compare") || "[]"));
-    if (set.has(key)) set.delete(key); else set.add(key);
+    if (set.has(key)) set.delete(key);
+    else set.add(key);
     localStorage.setItem("vw-compare", JSON.stringify([...set]));
     renderCompareList();
   });
@@ -362,16 +413,21 @@ window.addEventListener("load", () => {
 
   // save selected
   saveBtn?.addEventListener("click", () => {
-    const sel = new Set(JSON.parse(localStorage.getItem("vw-selected") || "[]"));
-    sel.add(key); localStorage.setItem("vw-selected", JSON.stringify([...sel]));
+    const sel = new Set(
+      JSON.parse(localStorage.getItem("vw-selected") || "[]")
+    );
+    sel.add(key);
+    localStorage.setItem("vw-selected", JSON.stringify([...sel]));
     saveBtn.textContent = "✓ Added to Selected";
   });
 
   // quick compare table overview (all cars)
   if (compareTable) {
-    Object.values(cars).forEach(c => {
+    Object.values(cars).forEach((c) => {
       const tr = document.createElement("tr");
-      tr.innerHTML = `<td>${c.name}</td><td>${inr(c.price)}</td><td>${c.mileage}</td><td>${c.power}</td>`;
+      tr.innerHTML = `<td>${c.name}</td><td>${inr(c.price)}</td><td>${
+        c.mileage
+      }</td><td>${c.power}</td>`;
       compareTable.appendChild(tr);
     });
   }
@@ -392,17 +448,23 @@ window.addEventListener("load", () => {
       body.innerHTML = `<tr><td colspan="5">No cars selected for compare. Add from Search or Car page.</td></tr>`;
       return;
     }
-    list.forEach(k => {
-      const c = cars[k]; if (!c) return;
+    list.forEach((k) => {
+      const c = cars[k];
+      if (!c) return;
       const onr = Math.round(c.price * f);
       const tr = document.createElement("tr");
-      tr.innerHTML = `<td>${c.name}</td><td>${inr(c.price)}</td><td>${inr(onr)}</td><td>${c.mileage}</td><td>${c.power}</td>`;
+      tr.innerHTML = `<td>${c.name}</td><td>${inr(c.price)}</td><td>${inr(
+        onr
+      )}</td><td>${c.mileage}</td><td>${c.power}</td>`;
       body.appendChild(tr);
     });
   }
   render();
   citySel.addEventListener("change", render);
-  clearBtn?.addEventListener("click", () => { localStorage.setItem("vw-compare", "[]"); render(); });
+  clearBtn?.addEventListener("click", () => {
+    localStorage.setItem("vw-compare", "[]");
+    render();
+  });
 })();
 
 /* ---------- Selected page logic ---------- */
@@ -414,18 +476,29 @@ window.addEventListener("load", () => {
   function render() {
     const list = JSON.parse(localStorage.getItem("vw-selected") || "[]");
     grid.innerHTML = "";
-    if (!list.length) { grid.innerHTML = `<div class="car-card">No selected cars yet.</div>`; return; }
-    list.forEach(k => {
-      const c = cars[k]; if (!c) return;
+    if (!list.length) {
+      grid.innerHTML = `<div class="car-card">No selected cars yet.</div>`;
+      return;
+    }
+    list.forEach((k) => {
+      const c = cars[k];
+      if (!c) return;
       const a = document.createElement("a");
       a.href = `car.html?car=${encodeURIComponent(k)}`;
       a.className = "car-card";
-      a.innerHTML = `<img src="${c.img}" alt="${c.name}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22160%22><rect width=%22300%22 height=%22160%22 fill=%22%23ddd%22/><text x=%2240%22 y=%2288%22 font-size=%2216%22>Image unavailable</text></svg>';"><h2>${c.name}</h2><p>${inr(c.price)} • ${c.mileage}</p>`;
+      a.innerHTML = `<img src="${c.img}" alt="${
+        c.name
+      }" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22160%22><rect width=%22300%22 height=%22160%22 fill=%22%23ddd%22/><text x=%2240%22 y=%2288%22 font-size=%2216%22>Image unavailable</text></svg>';"><h2>${
+        c.name
+      }</h2><p>${inr(c.price)} • ${c.mileage}</p>`;
       grid.appendChild(a);
     });
   }
   render();
-  clearBtn?.addEventListener("click", () => { localStorage.setItem("vw-selected", "[]"); render(); });
+  clearBtn?.addEventListener("click", () => {
+    localStorage.setItem("vw-selected", "[]");
+    render();
+  });
 })();
 
 /* ---------- Utility: Show selected/compare counts in header (optional) ---------- */
