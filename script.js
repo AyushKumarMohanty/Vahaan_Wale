@@ -18,97 +18,97 @@ const cars = {
     price: 650000,
     mileage: "22 km/l",
     power: "89 bhp",
-    img: "https://imgd-ct.aeplcdn.com/1056x660/n/cw/ec/53823/marutisuzuki-swift-exterior-right-front-three-quarter-49.jpeg",
-    model: "https://modelviewer.dev/shared-assets/models/Car.glb"
+    img: "https://imgd.aeplcdn.com/664x374/n/cw/ec/159231/swift-right-front-three-quarter.jpeg?isig=0&q=80",
+    model: "https://modelviewer.dev/shared-assets/models/Car.glb",
   },
   creta: {
     name: "Hyundai Creta",
     price: 1120000,
     mileage: "17 km/l",
     power: "113 bhp",
-    img: "https://imgd-ct.aeplcdn.com/1056x660/n/cw/ec/141783/hyundai-creta-facelift-right-front-three-quarter12.jpeg",
-    model: "https://modelviewer.dev/shared-assets/models/Car.glb"
+    img: "https://imgd.aeplcdn.com/664x374/n/cw/ec/106815/creta-exterior-right-front-three-quarter-5.jpeg?isig=0&q=80",
+    model: "https://modelviewer.dev/shared-assets/models/Car.glb",
   },
   thar: {
     name: "Mahindra Thar",
     price: 1450000,
     mileage: "15 km/l",
     power: "130 bhp",
-    img: "https://imgd-ct.aeplcdn.com/1056x660/n/cw/ec/121999/mahindra-thar-right-front-three-quarter7.jpeg",
-    model: "https://modelviewer.dev/shared-assets/models/Car.glb"
+    img: "https://images.91wheels.com/assets/b_images/main/models/profile/profile1723456356.jpg?width=420&q=60?w=420&q=80",
+    model: "https://modelviewer.dev/shared-assets/models/Car.glb",
   },
   baleno: {
     name: "Maruti Baleno",
     price: 780000,
     mileage: "22 km/l",
     power: "90 bhp",
-    img: "https://imgd-ct.aeplcdn.com/1056x660/n/cw/ec/115295/maruti-suzuki-baleno-right-front-three-quarter0.jpeg",
-    model: "https://modelviewer.dev/shared-assets/models/Car.glb"
+    img: "https://imgd.aeplcdn.com/1920x1080/n/cw/ec/102663/baleno-exterior-right-front-three-quarter-71.jpeg?isig=0&q=80&q=80",
+    model: "https://modelviewer.dev/shared-assets/models/Car.glb",
   },
   brezza: {
     name: "Maruti Brezza",
     price: 980000,
     mileage: "20 km/l",
     power: "103 bhp",
-    img: "https://imgd-ct.aeplcdn.com/1056x660/n/cw/ec/137451/maruti-suzuki-brezza-right-front-three-quarter7.jpeg",
-    model: "https://modelviewer.dev/shared-assets/models/Car.glb"
+    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-zHg3VfFFCOh0fwENPRGUKwXhIi8nt4pSWw&s",
+    model: "https://modelviewer.dev/shared-assets/models/Car.glb",
   },
   harrier: {
     name: "Tata Harrier",
     price: 1650000,
     mileage: "16 km/l",
     power: "167 bhp",
-    img: "https://imgd-ct.aeplcdn.com/1056x660/n/cw/ec/143123/tata-harrier-right-front-three-quarter10.jpeg",
-    model: "https://modelviewer.dev/shared-assets/models/Car.glb"
+    img: "https://imgd.aeplcdn.com/664x374/n/cw/ec/139139/harrier-facelift-exterior-right-front-three-quarter-2.jpeg?isig=0&q=80",
+    model: "https://modelviewer.dev/shared-assets/models/Car.glb",
   },
   nexon: {
     name: "Tata Nexon",
     price: 990000,
     mileage: "21 km/l",
     power: "118 bhp",
-    img: "https://imgd-ct.aeplcdn.com/1056x660/n/cw/ec/144517/tata-nexon-right-front-three-quarter0.jpeg",
-    model: "https://modelviewer.dev/shared-assets/models/Car.glb"
+    img: "https://img.autocarindia.com/ExtraImages/20240327034719_Nexon%20Base%20Model%20Web%20Resized.001.jpeg?w=700&c=1",
+    model: "https://modelviewer.dev/shared-assets/models/Car.glb",
   },
   verna: {
     name: "Hyundai Verna",
     price: 1180000,
     mileage: "18 km/l",
     power: "115 bhp",
-    img: "https://imgd-ct.aeplcdn.com/1056x660/n/cw/ec/135381/hyundai-verna-right-front-three-quarter10.jpeg",
-    model: "https://modelviewer.dev/shared-assets/models/Car.glb"
+    img: "https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/Verna/Highlights/vernapoolside1.jpg",
+    model: "https://modelviewer.dev/shared-assets/models/Car.glb",
   },
   venue: {
     name: "Hyundai Venue",
     price: 830000,
     mileage: "20 km/l",
     power: "118 bhp",
-    img: "https://imgd-ct.aeplcdn.com/1056x660/n/cw/ec/144283/hyundai-venue-right-front-three-quarter1.jpeg",
-    model: "https://modelviewer.dev/shared-assets/models/Car.glb"
+    img: "https://imgd.aeplcdn.com/664x374/n/cw/ec/141113/venue-exterior-right-front-three-quarter-18.jpeg?isig=0&q=80",
+    model: "https://modelviewer.dev/shared-assets/models/Car.glb",
   },
   xuv700: {
     name: "Mahindra XUV700",
     price: 1750000,
     mileage: "15 km/l",
     power: "197 bhp",
-    img: "https://imgd-ct.aeplcdn.com/1056x660/n/cw/ec/118993/mahindra-xuv700-right-front-three-quarter0.jpeg",
-    model: "https://modelviewer.dev/shared-assets/models/Car.glb"
+    img: "https://img.autocarindia.com/ExtraImages/20230621080939_mahindra_xuv700_mx.jpeg?w=700&c=1",
+    model: "https://modelviewer.dev/shared-assets/models/Car.glb",
   },
   fortuner: {
     name: "Toyota Fortuner",
     price: 3250000,
     mileage: "12 km/l",
     power: "201 bhp",
-    img: "https://imgd-ct.aeplcdn.com/1056x660/n/cw/ec/137657/toyota-fortuner-right-front-three-quarter5.jpeg",
-    model: "https://modelviewer.dev/shared-assets/models/Car.glb"
+    img: "https://stimg.cardekho.com/images/carexteriorimages/930x620/Toyota/Fortuner/10904/1755075007369/front-view-118.jpg",
+    model: "https://modelviewer.dev/shared-assets/models/Car.glb",
   },
   ciaz: {
     name: "Maruti Ciaz",
     price: 920000,
     mileage: "21 km/l",
     power: "103 bhp",
-    img: "https://imgd-ct.aeplcdn.com/1056x660/n/cw/ec/141849/maruti-suzuki-ciaz-right-front-three-quarter3.jpeg",
-    model: "https://modelviewer.dev/shared-assets/models/Car.glb"
-  }
+    img: "https://imgd-ct.aeplcdn.com/664x415/n/cw/ec/48542/ciaz-exterior-left-rear-three-quarter.jpeg?q=80",
+    model: "https://modelviewer.dev/shared-assets/models/Car.glb",
+  },
 };
 
 /* ---------- Utilities ---------- */
